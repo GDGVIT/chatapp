@@ -26,7 +26,7 @@ iris.Listen(":8080")
 func ListProject(ctx *iris.Context)  {
 res,err:=grequests.Get("https://api.github.com/users/GDGVIT/repos",nil)
 if err!=nil{
-  ctx.JSON(iris.StatusOK,map[string]string{"detail":"something went wrong pls contact gdg !!"})
+  ctx.JSON(iris.StatusOK,map[string]string{"detail":"something went wrong please contact gdg !!"})
 }
 var result []project
 json.NewDecoder(res).Decode(&result)
