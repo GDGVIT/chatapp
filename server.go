@@ -18,7 +18,7 @@ type ProjectDetail struct {
 func main() {
 iris.Get("/projects",ListProject)
 iris.Get("/project/:project",ListProjectDetail)
-iris.Listen(":8080")
+iris.Listen(":8000")
 
 }
 
