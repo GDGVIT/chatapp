@@ -24,8 +24,8 @@ chatterbot.set_trainer(ListTrainer)
 # Get a response to an input statement
 
 class QuestionHandler(RequestHandler):
-	#@coroutine
-	#@removeslash
+	@coroutine
+	@removeslash
 	def get(self):
 		#self.write("<p>What is your name:</p>")
 		question=self.get_argument('question');	
