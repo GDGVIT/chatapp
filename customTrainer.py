@@ -7,7 +7,7 @@ from chatterbot import ChatBot
 chatterbot = ChatBot("Training our GDG Bot with some tests.")
 chatterbot.set_trainer(ListTrainer)
 
-chatterbot.train([
+"""chatterbot.train([
     "Which chapter it is?",
     "This is Google Developers Group - VIT Vellore",
 ])
@@ -20,4 +20,4 @@ chatterbot.train([
 #Train if user says Bye! :/
 
 chatterbot.train([
-	'Bye',"Bye! I'll miss you!"])
+	'Bye',"Bye! I'll miss you!"])"""
