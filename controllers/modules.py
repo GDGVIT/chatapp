@@ -8,6 +8,9 @@ from chatterbot import ChatBot
 import customTrainer
 from chatterbot.trainers import ListTrainer
 import os
+import re
+from motor import MotorClient
+from  uuid import uuid4
 from routes import *
 chatbot = ChatBot(
     'GDG BOT',
@@ -19,3 +22,4 @@ from chatterbot.trainers import ListTrainer
 
 chatterbot = ChatBot("Training chatbot")
 chatterbot.set_trainer(ListTrainer)
+db=MotorClient().chatDB
