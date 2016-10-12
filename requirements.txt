@@ -1,0 +1,4 @@
+ChatterBot == 0.4.10
+motor == 0.6.2
+tornado == 4.3
+Tornado==4.3
