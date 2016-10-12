@@ -9,7 +9,7 @@ class QuestionHandler(RequestHandler):
         print "setting headers!!!"
         self.set_header("Access-Control-Allow-Origin", "*")
         self.set_header("Access-Control-Allow-Headers", "x-requested-with")
-        self.set_header('Access-Control-Allow-Methods', 'POST, GET, OPTIONS')
+        self.set_header('Access-Control-Allow-Methods', 'GET, OPTIONS')
     
     
     @coroutine
@@ -26,3 +26,7 @@ class QuestionHandler(RequestHandler):
         self.write('{"status":"200","message":%s,"answer":%s}'%(self._reason,response))
 	def write_error(self,status_code,**kwargs):
 		self.write('{"status":%s,"message":%s,"answer":"null"}'%(status_code,self._reason))
+	def options(self):
+		self.set_status(204)
+		self.finish()
+	
