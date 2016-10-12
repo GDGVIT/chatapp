@@ -2,7 +2,7 @@ from controllers import *
 
 route=[
 	(
-		r"/",
+		r"/faq",
 		chat.QuestionHandler
 	
 	),

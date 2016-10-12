@@ -4,13 +4,20 @@
 <script>
  $(document).ready(function(){
     
+    $(document).load(function(){
+		var pathName=window.location.pathname;
+		var index=pathName.indexOf("email=");
+		var emailId=pathName.substr(index+6);
+		var url="http://localhost:8888/welcome?email="+emailId;
+		returnJson(url);
+		}
     
-    
+    )
     $("#submit").click(function(){
         $("#question").css("background-color", "pink");
-        setTimeout(returnJson,0);
+        setTimeout(returnAnswer,0);
     });
-    
+  
     $.ajax({
 
     type: "GET",
@@ -20,8 +27,12 @@
 	}).done(function (data) {
     console.log(data);
 	});
-   
-   var returnJson=function(){
+var returnAnswer=function(){
+	var url="http://localhost:8888/faq?question="+$("#question").val();
+	returnJson(url);
+	
+	}   
+   var returnJson=function(url){
 	var xhttp;
     
     xhttp = new XMLHttpRequest();
@@ -32,9 +43,10 @@
     }
   };
 	
-	xhttp.open("GET", "http://localhost:8888/faq?question="+$("#question").val(), true);
+	xhttp.open("GET", url, true);
 	xhttp.send();
 }
+
 });
 </script>
 
