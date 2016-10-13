@@ -34,14 +34,14 @@ class QuestionHandler(RequestHandler):
         '''
         jsonData = {
         'status' : 200,
-        'message' : str(self._reason),
+        'message' : "OK"
         'answer' : response
         }
         self.write(jsonData)
     def write_error(self,status_code,**kwargs):
         jsonData = {
         'status' : int(status_code),
-        'message' : str(self._reason),
+        'message' : "Internal server error",
         'answer' : 'NULL'
         }
         self.write(jsonData)
