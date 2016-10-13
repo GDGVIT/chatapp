@@ -12,6 +12,10 @@ import re
 from motor import MotorClient
 from  uuid import uuid4
 from routes import *
+from textblob import TextBlob
+from textblob.sentiments import NaiveBayesAnalyzer
+from textblob.classifiers import NaiveBayesClassifier
+from langdetect import detect
 chatbot = ChatBot(
     'GDG BOT',
     trainer='chatterbot.trainers.ChatterBotCorpusTrainer'
@@ -23,3 +27,5 @@ from chatterbot.trainers import ListTrainer
 chatterbot = ChatBot("Training chatbot")
 chatterbot.set_trainer(ListTrainer)
 db=MotorClient().chatDB
+with open('hitrain.csv','r') as fp:
+	cl=NaiveBayesClassifier(fp,format="csv")

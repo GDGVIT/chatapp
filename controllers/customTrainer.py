@@ -7,6 +7,7 @@ from chatterbot import ChatBot
 chatterbot = ChatBot("Training our GDG Bot with some tests.")
 chatterbot.set_trainer(ListTrainer)
 
+
 chatterbot.train([	
     "Which chapter it is?",
     "This is Google Developers Group - VIT Vellore",
