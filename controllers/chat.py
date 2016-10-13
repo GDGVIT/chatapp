@@ -21,20 +21,30 @@ class QuestionHandler(RequestHandler):
         sentence=TextBlob(question,analyzer=NaiveBayesAnalyzer())
         sentence1=TextBlob(question)
         if question=="hello" or question=="hi":
-			response="hello"
+			response="Hey there! How are you?"
         elif cl.classify(question)=='neg' and sentence1.sentiment.polarity==0 and detect(str(sentence1.correct()))!="en":
 			response='Language please'
         elif sentence.sentiment.p_pos<0.4:
 			response='Can I help you with some thing'
         else:
 			response = chatbot.get_response(question)
-        print 'response',response   
+        #print 'response',response   Dont use print commands when the app is in production 
         '''
         Print the response based upon the training
         '''
-        self.write('{"status":"200","message":%s,"answer":%s}'%(self._reason,response))
+        jsonData = {
+        'status' : 200,
+        'message' : str(self._reason),
+        'answer' : response
+        }
+        self.write(jsonData)
     def write_error(self,status_code,**kwargs):
-        self.write('{"status":%s,"message":%s,"answer":"null"}'%(status_code,self._reason))
+        jsonData = {
+        'status' : int(status_code),
+        'message' : str(self._reason),
+        'answer' : 'NULL'
+        }
+        self.write(jsonData)
     def options(self):
         self.set_status(204)
         self.finish()
