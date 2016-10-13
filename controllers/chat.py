@@ -34,7 +34,7 @@ class QuestionHandler(RequestHandler):
         '''
         jsonData = {
         'status' : 200,
-        'message' : "OK"
+        'message' : "OK",
         'answer' : response
         }
         self.write(jsonData)
