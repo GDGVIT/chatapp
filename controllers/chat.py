@@ -20,8 +20,10 @@ class QuestionHandler(RequestHandler):
         print question
         sentence=TextBlob(question,analyzer=NaiveBayesAnalyzer())
         sentence1=TextBlob(question)
-        if cl.classify(question)=='neg' and sentence1.sentiment.polarity==0 and detect(question)!="en":
-			response='You are what you think of and use decent English please'
+        if question=="hello" or question=="hi":
+			response="hello"
+        elif cl.classify(question)=='neg' and sentence1.sentiment.polarity==0 and detect(str(sentence1.correct()))!="en":
+			response='Language please'
         elif sentence.sentiment.p_pos<0.4:
 			response='Can I help you with some thing'
         else:
