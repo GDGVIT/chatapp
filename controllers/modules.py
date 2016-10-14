@@ -9,6 +9,7 @@ import customTrainer
 from chatterbot.trainers import ListTrainer
 import os
 import re
+import json
 from motor import MotorClient
 from  uuid import uuid4
 from routes import *

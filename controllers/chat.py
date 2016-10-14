@@ -35,8 +35,9 @@ class QuestionHandler(RequestHandler):
         jsonData = {
         'status' : 200,
         'message' : "OK",
-        'answer' : response
+        'answer' : str(response)
         }
+        jsonData=json.dumps(jsonData)
         self.write(jsonData)
     def write_error(self,status_code,**kwargs):
         jsonData = {

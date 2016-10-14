@@ -22,6 +22,7 @@ chatterbot.train([
 
 chatterbot.train([
 	'Bye',"Bye! I'll miss you!"])
+chatterbot.train(['what is the best chapter','GDG-VIT VELLORE'])
 '''
 from chatterbot import ChatBot
 import logging
