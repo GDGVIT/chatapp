@@ -1,9 +1,6 @@
 from modules import *
 
 class QuestionHandler(RequestHandler):
-    '''when user scrolls down to the FAQ section an ajax request to the get method for welcoming the user
-       also when te user scolls then the text welcoming the user must be dynamically deleted
-    '''
     
     def set_default_headers(self):
         print "setting headers!!!"
@@ -15,22 +12,40 @@ class QuestionHandler(RequestHandler):
     @coroutine
     @removeslash
     def get(self):
+        #extract response
         question=self.get_argument('question')         
-   
-        print question
+        '''
+        Check comments for different ways to tweak the bot
         sentence=TextBlob(question,analyzer=NaiveBayesAnalyzer())
+        '''
         sentence1=TextBlob(question)
         if question=="hello" or question=="hi":
-			response="Hey there! How are you?"
-        elif cl.classify(question)=='neg' and sentence1.sentiment.polarity==0 and detect(str(sentence1.correct()))!="en":
-			response='Language please'
-        elif sentence.sentiment.p_pos<0.4:
-			response='Can I help you with some thing'
+            response="Hey there! How are you?"
+            '''
+            You can use custom classifiers to detect bad language ex:
+            elif cl.classify(question)=='neg':
+                response='good words appreciated'
+            '''
+            '''
+            for knowing that whether it is english that is being spoken
+            this part is not very accurate you can use google api to configure
+            and then remove this part
+            '''
+        elif sentence1.sentiment.polarity==0 and detect(str(sentence1.correct()))!="en":
+            response='Language please'  
+        
+            
+            '''
+            You can have custom data set of responses based on the mood of the person 
+            for more information check the TextBlob documentation ex:
+            elif sentence.sentiment.p_pos<0.4:
+                response='Can I help you with some thing'            
+            '''
         else:
-			response = chatbot.get_response(question)
-        #print 'response',response   Dont use print commands when the app is in production 
+            response = chatbot.get_response(question)       
+
         '''
-        Print the response based upon the training
+        Return the response based upon the training
         '''
         jsonData = {
         'status' : 200,
