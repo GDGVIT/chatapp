@@ -1,2 +1,4 @@
 # chatapp
-A smart interactive chat app to know about GDG
+A smart interactive app to know about an organisation 
+
+
